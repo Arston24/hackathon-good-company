@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'auth/input_phone_number_screen.dart';
 import 'home.dart';
 
 class IntroScreen extends StatelessWidget {
@@ -10,7 +11,8 @@ class IntroScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Home();
+    getUser(context);
+    return Container();
   }
 
   void getUser(BuildContext context) async {
@@ -21,10 +23,10 @@ class IntroScreen extends StatelessWidget {
         MaterialPageRoute(builder: (context) => Home()),
       );
     } else {
-      // await Navigator.push(
-      //   context,
-      //   MaterialPageRoute(builder: (context) => InputPhoneNumberScreen()),
-      // );
+      await Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => InputPhoneNumberScreen()),
+      );
     }
   }
 }

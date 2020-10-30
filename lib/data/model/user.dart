@@ -1,66 +1,42 @@
-//
-//
-//
-// class UserModel {
-//   String userId;
-//   String firstName;
-//   String second_name;
-//   String number;
-//   String achive_way;
-//   String locality;
-//   String year;
-//   String event;
-//   String place;
-//   DateTime timeStamp;
-//
-//   UserModel(
-//       {this.userId,
-//         this.firstName,
-//         this.second_name,
-//         this.number,
-//         this.achive_way,
-//         this.locality,
-//         this.year,
-//         this.event,
-//         this.place,
-//         this.timeStamp});
-//
-//   factory UserModel.fromJson(Map<dynamic, dynamic> json) =>
-//       _UserModelFromJson(json);
-//
-//   Map<String, dynamic> toJson() => _UserModelToJson(this);
-//
-//   @override
-//   bool operator ==(Object other) {
-//     var user = other as UserModel;
-//     return user == null ? false : user.userId == userId;
-//   }
-// }
-//
-// UserModel _UserModelFromJson(Map<dynamic, dynamic> json) {
-//   return UserModel(
-//     userId: json['userId'] as String,
-//     firstName: json['firstName'] as String,
-//     lastName: json['lastName'] as String,
-//     interests: json['interests'] as String,
-//     useful: json['useful'] as String,
-//     phone: json['phone'] as String,
-//     company: json['company'] as String,
-//     token: json['token'] as String,
-//     aboutMe: json['aboutMe'] as String,
-//     avatar: json['avatar'] as String,
-//   );
-// }
-//
-// Map<String, dynamic> _UserModelToJson(UserModel instance) => <String, dynamic>{
-//   'userId': instance.userId,
-//   'firstName': instance.firstName,
-//   'lastName': instance.lastName,
-//   'interests': instance.interests,
-//   'useful': instance.useful,
-//   'phone': instance.phone,
-//   'company': instance.company,
-//   'token': instance.token,
-//   'aboutMe': instance.aboutMe,
-//   'avatar': instance.avatar,
-// };
+
+
+
+class UserModel {
+  String userId;
+  String firstName;
+  String second_name;
+  String locality;
+
+  UserModel(
+      {this.userId,
+        this.firstName,
+        this.second_name,
+        this.locality});
+
+  factory UserModel.fromJson(Map<dynamic, dynamic> json) =>
+      _UserModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _UserModelToJson(this);
+
+  @override
+  bool operator ==(Object other) {
+    var user = other as UserModel;
+    return user == null ? false : user.userId == userId;
+  }
+}
+
+UserModel _UserModelFromJson(Map<dynamic, dynamic> json) {
+  return UserModel(
+    userId: json['userId'] as String,
+    firstName: json['firstName'] as String,
+    second_name: json['lastName'] as String,
+    locality: json['interests'] as String,
+  );
+}
+
+Map<String, dynamic> _UserModelToJson(UserModel instance) => <String, dynamic>{
+  'userId': instance.userId,
+  'firstName': instance.firstName,
+  'second_name': instance.second_name,
+  'locality': instance.locality,
+};
