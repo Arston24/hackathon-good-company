@@ -20,5 +20,10 @@ class EventRepository {
   }
 
 
+  Future<EventModel> getEvent(String eventId) async {
+    var doc = await db.collection('events').doc(eventId).get();
+    return EventModel.fromJson(doc.data());
+  }
+
 
 }

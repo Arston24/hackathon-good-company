@@ -22,6 +22,7 @@ class _EventInfoScreenState extends State<EventInfoScreen> {
 
   @override
   void didChangeDependencies() {
+    eventBloc.getEvent(widget.eventId);
     // eventBloc.getEventCommetns(widget.eventId);
     // eventBloc.addParticipantsListener();
     // eventBloc.isMember(widget.eventId).then((isParticipant) => {
@@ -98,35 +99,35 @@ class _EventInfoScreenState extends State<EventInfoScreen> {
         body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           controller: ScrollController(),
-          child: StreamBuilder<List<EventModel>>(
-            stream: eventBloc.events,
+          child: StreamBuilder<EventModel>(
+            stream: eventBloc.event,
             builder: (BuildContext context,
-                AsyncSnapshot<List<EventModel>> snapshot) {
+                AsyncSnapshot<EventModel> snapshot) {
               Widget child;
 
               if (snapshot.hasData) {
                 child = SingleChildScrollView(
                   child: Column(children: <Widget>[
-                    // Container(margin: EdgeInsets.only(top: 16.0, bottom: 8.0)),
-                    // Padding(
-                    //     padding: EdgeInsets.only(left: 16.0, right: 16.0),
-                    //     child: Center(
-                    //       child: Text('${snapshot.data.name}',
-                    //           style: TextStyle(fontSize: 22.0)),
-                    //     )),
-                    // Container(margin: EdgeInsets.only(top: 8.0, bottom: 8.0)),
-                    // Padding(
-                    //     padding: EdgeInsets.only(left: 16.0, right: 16.0),
-                    //     child: Center(
-                    //       child: Text('${snapshot.data.description}',
-                    //           style: TextStyle(fontSize: 16.0)),
-                    //     )),
-                    // Container(margin: EdgeInsets.only(top: 8.0, bottom: 8.0)),
-                    // Center(
-                    //   child: Text('${snapshot.data.company}',
-                    //       textAlign: TextAlign.center,
-                    //       style: TextStyle(fontSize: 16.0)),
-                    // ),
+                    Container(margin: EdgeInsets.only(top: 16.0, bottom: 8.0)),
+                    Padding(
+                        padding: EdgeInsets.only(left: 16.0, right: 16.0),
+                        child: Center(
+                          child: Text('${snapshot.data.name}',
+                              style: TextStyle(fontSize: 22.0)),
+                        )),
+                    Container(margin: EdgeInsets.only(top: 8.0, bottom: 8.0)),
+                    Padding(
+                        padding: EdgeInsets.only(left: 16.0, right: 16.0),
+                        child: Center(
+                          child: Text('${snapshot.data.description}',
+                              style: TextStyle(fontSize: 16.0)),
+                        )),
+                    Container(margin: EdgeInsets.only(top: 8.0, bottom: 8.0)),
+                    Center(
+                      child: Text('${snapshot.data.company}',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontSize: 16.0)),
+                    ),
                     // Padding(
                     //   padding: EdgeInsets.all(16.0),
                     //   child: Column(

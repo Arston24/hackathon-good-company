@@ -55,7 +55,7 @@ class EventModel {
 
 EventModel _EventModelFromJson(Map<dynamic, dynamic> json) {
   return EventModel(
-    id: json['id'] as String,
+    id: json['eventId'] as String,
     name: json['name'] as String,
     description: json['description'] as String,
     poster: json['poster'] as String,
