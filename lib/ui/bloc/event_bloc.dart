@@ -11,12 +11,20 @@ class EventBloc {
 
 
   final _eventsController = StreamController<List<EventModel>>.broadcast();
+  final _eventController = StreamController<EventModel>.broadcast();
+
 
   Stream<List<EventModel>> get events => _eventsController.stream;
+  Stream<EventModel> get event => _eventController.stream;
 
   void getEvents() async {
     var events = await eventRepository.getEvents();
     _eventsController.sink.add(events);
+  }
+
+  Future<void> getEvent(String eventId) async {
+    var event = await eventRepository.getEvent(eventId);
+    _eventController.sink.add(event);
   }
 
 }
