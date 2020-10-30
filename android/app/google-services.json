@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "210546291269",
+    "firebase_url": "https://hackathon-gc.firebaseio.com",
+    "project_id": "hackathon-gc",
+    "storage_bucket": "hackathon-gc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:210546291269:android:25e30e354655518bf9692c",
+        "android_client_info": {
+          "package_name": "com.example.hackathon_gc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "210546291269-jrbs0ksoki9s1a2fi6tqln9d32n3cqs2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9sAYYQXOSMs2yJpR-nbfDB2X-Bl57EAM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "210546291269-jrbs0ksoki9s1a2fi6tqln9d32n3cqs2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
