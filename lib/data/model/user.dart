@@ -6,7 +6,7 @@ class UserModel {
   String firstName;
   String second_name;
   String locality;
-
+  String phone;
   UserModel(
       {this.userId,
         this.firstName,

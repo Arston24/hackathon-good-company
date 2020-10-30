@@ -4,6 +4,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import 'model/user.dart';
+
 class UserRepository {
 
   final db = FirebaseFirestore.instance;
@@ -15,5 +17,10 @@ class UserRepository {
     return doc.exists;
   }
 
-
+  void createNewUser(UserModel user) async {
+    var currentUser = auth.currentUser;
+    user.userId = currentUser.uid;
+    user.phone = currentUser.phoneNumber;
+    await db.collection('users').doc(user.userId).set(user.toJson());
+  }
 }

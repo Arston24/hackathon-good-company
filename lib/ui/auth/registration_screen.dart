@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hackathon_gc/data/model/user.dart';
+import 'package:hackathon_gc/data/user_repository.dart';
 
 import '../home.dart';
 
@@ -18,6 +19,7 @@ class _RegistrationScreen extends State<RegistrationScreen> {
   final companyController = TextEditingController();
   final usefulController = TextEditingController();
 
+  var userRepository = UserRepository();
 
   @override
   Widget build(BuildContext context) {
@@ -150,11 +152,7 @@ class _RegistrationScreen extends State<RegistrationScreen> {
                       var user = UserModel();
                       user.firstName = firstNameController.text;
                       user.second_name = secondNameController.text;
-                      // user.company = companyController.text;
-                      // user.useful = usefulController.text;
-                      // user.interests = interestsController.text;
-                      // user.aboutMe = aboutController.text;
-                      // userRepository.createNewUser(user);
+                      userRepository.createNewUser(user);
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(builder: (context) => Home()),
