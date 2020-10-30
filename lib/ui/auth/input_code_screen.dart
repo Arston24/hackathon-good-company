@@ -72,8 +72,8 @@ class _InputCodeScreenState extends State<InputCodeScreen> {
                         progressVisible = true;
                       });
                       final code = _codeController.text.trim();
-                      print("code ${code}");
-                      var credential = PhoneAuthProvider.getCredential(
+                      print("code ${code} _verificationId $_verificationId");
+                      var credential = PhoneAuthProvider.credential(
                           verificationId: _verificationId, smsCode: code);
 
                       var result = await _auth.signInWithCredential(credential);
@@ -142,6 +142,6 @@ class _InputCodeScreenState extends State<InputCodeScreen> {
         codeSent: (String verificationId, [int forceResendingToken]) {
           _verificationId = verificationId;
         },
-        codeAutoRetrievalTimeout: null);
+        codeAutoRetrievalTimeout:  (String verificationId) {});
   }
 }
