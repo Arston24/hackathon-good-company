@@ -1,6 +1,4 @@
 
-
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -22,5 +20,12 @@ class UserRepository {
     user.userId = currentUser.uid;
     user.phone = currentUser.phoneNumber;
     await db.collection('users').doc(user.userId).set(user.toJson());
+  }
+
+  Future<UserModel> getCurrentUser() async {
+    final currentUser = await auth.currentUser;
+    var userId = currentUser.uid;
+    final doc = await db.collection('users').doc(userId).get();
+    return UserModel.fromJson(doc.data());
   }
 }

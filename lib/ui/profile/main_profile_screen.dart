@@ -1,4 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
+import 'package:hackathon_gc/data/model/user.dart';
+import 'package:hackathon_gc/ui/bloc/bloc.dart';
 import 'package:path/path.dart';
 
 class ProfileMainScreen extends StatefulWidget {
@@ -9,6 +13,8 @@ class ProfileMainScreen extends StatefulWidget {
 }
 
 class ProfileMainScreenState extends State<ProfileMainScreen> {
+
+  final bloc = Bloc();
 
   @override
   void didChangeDependencies() {
@@ -28,17 +34,18 @@ class ProfileMainScreenState extends State<ProfileMainScreen> {
         actions: <Widget>[
           Padding(
               padding: EdgeInsets.only(right: 20.0),
-              child: GestureDetector(
-                onTap: () {
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(builder: (context) => EditProfileScreen()));
-                },
-                child: Icon(
-                  Icons.edit,
-                  size: 26.0,
-                ),
-              )),
+              // child: GestureDetector(
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(builder: (context) => EditProfileScreen()));
+              //   },
+              //   child: Icon(
+              //     Icons.edit,
+              //     size: 26.0,
+              //   ),
+              // )
+          ),
           Padding(
               padding: EdgeInsets.only(right: 20.0),
               child: GestureDetector(
@@ -52,10 +59,52 @@ class ProfileMainScreenState extends State<ProfileMainScreen> {
               )),
         ],
       ),
-      body: Container()
+      body: profile()
     );
   }
 
+  Widget profile() {
+    print("profile");
+    return FutureBuilder<UserModel>(
+      future: bloc.getCurrentUser(),
+      builder: (BuildContext context,
+      AsyncSnapshot<UserModel> snapshot) {
+        if (snapshot.hasData) {
+          print("(snapshot.hasData)");
+          return Column(
+            children: [
+              Container(
+                  width: 100,
+                  height: 100,
+                  child: IconButton(
+                    icon: Icon(FontAwesome.user_o),
+                  )
+              ),
+              Row(children: [Text("Имя: ", style: TextStyle(fontWeight: FontWeight.bold), ), Text("${snapshot.data.firstName}")],),
+              Row(children: [Text("Фамилия: ", style: TextStyle(fontWeight: FontWeight.bold)), Text("${snapshot.data.second_name}")],),
+              Row(children: [Text("Город проживания: ", style: TextStyle(fontWeight: FontWeight.bold)), Text("${snapshot.data.city}")],),
+              Row(children: [Text("Телефон: ", style: TextStyle(fontWeight: FontWeight.bold)), Text("snapshot.data.phone")],),
+              Row(children: [Text("Ваш ID: ", style: TextStyle(fontWeight: FontWeight.bold)), Text("snapshot.data.userId")],),
+              Column(
+                children: [
+                  Text("О себе:"),
+                  Padding(padding: EdgeInsets.all(5)),
+                  Text("Текст обо мне и о тебе и тебе,"
+                      " Текст обо мне и о тебе и тебе, Текст обо мне и о тебе и тебе, Текст обо мне и о тебе и тебе,"
+                      " Текст обо мне и о тебе и тебе, Текст обо мне и о тебе и тебе, Текст обо мне и о тебе и тебе")
+                ],
+              )
+            ],
+          );
+        } else {
+          print("(snapshot.hasNOData)");
+          return Center(child: CircularProgressIndicator());
+        };
+      },
+
+    );
+
+  }
   // Widget buildInfo(AsyncSnapshot<UserModel> snapshot, BuildContext context) {
   //   return Scaffold(
   //     body: SingleChildScrollView(

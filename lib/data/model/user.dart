@@ -19,9 +19,9 @@ class UserModel {
         this.city});
 
   factory UserModel.fromJson(Map<dynamic, dynamic> json) =>
-      _UserModelFromJson(json);
+      UserModelFromJson(json);
 
-  Map<String, dynamic> toJson() => _UserModelToJson(this);
+  Map<String, dynamic> toJson() => UserModelToJson(this);
 
   @override
   bool operator ==(Object other) {
@@ -30,7 +30,7 @@ class UserModel {
   }
 }
 
-UserModel _UserModelFromJson(Map<dynamic, dynamic> json) {
+UserModel UserModelFromJson(Map<dynamic, dynamic> json) {
   return UserModel(
     userId: json['userId'] as String,
     firstName: json['firstName'] as String,
@@ -39,7 +39,7 @@ UserModel _UserModelFromJson(Map<dynamic, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _UserModelToJson(UserModel instance) => <String, dynamic>{
+Map<String, dynamic> UserModelToJson(UserModel instance) => <String, dynamic>{
   'userId': instance.userId,
   'firstName': instance.firstName,
   'second_name': instance.second_name,
