@@ -15,9 +15,8 @@ class _RegistrationScreen extends State<RegistrationScreen> {
   final firstNameController = TextEditingController();
   final secondNameController = TextEditingController();
   final aboutController = TextEditingController();
-  final interestsController = TextEditingController();
-  final companyController = TextEditingController();
-  final usefulController = TextEditingController();
+  final city = TextEditingController();
+  final email = TextEditingController();
 
   var userRepository = UserRepository();
 
@@ -87,9 +86,9 @@ class _RegistrationScreen extends State<RegistrationScreen> {
           Padding(
             padding: EdgeInsets.all(20.0),
             child: TextFormField(
-              controller: interestsController,
+              controller: city,
               decoration: InputDecoration(
-                labelText: "Я ищу (каких людей/товары/услуги)",
+                labelText: "Город проживания",
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
@@ -106,28 +105,9 @@ class _RegistrationScreen extends State<RegistrationScreen> {
           Padding(
             padding: EdgeInsets.all(20.0),
             child: TextFormField(
-              controller: companyController,
+              controller: email,
               decoration: InputDecoration(
-                labelText: "Компания",
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-              ),
-              // The validator receives the text that the user has entered.
-              validator: (value) {
-                if (value.isEmpty) {
-                  return 'Заполните поле';
-                }
-                return null;
-              },
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(20.0),
-            child: TextFormField(
-              controller: usefulController,
-              decoration: InputDecoration(
-                labelText: "Чем могу быть полезен",
+                labelText: "E-mail",
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
@@ -152,11 +132,14 @@ class _RegistrationScreen extends State<RegistrationScreen> {
                       var user = UserModel();
                       user.firstName = firstNameController.text;
                       user.second_name = secondNameController.text;
+                      user.about = aboutController.text;
+                      user.email = email.text;
+                      user.city = city.text;
                       userRepository.createNewUser(user);
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(builder: (context) => Home()),
-                      );
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(builder: (context) => Home()),
+                          (Route<dynamic> route) => false);
                     },
                     child: Text('Зарегистрироваться'),
                   ),
