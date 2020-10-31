@@ -42,54 +42,6 @@ class _EventInfoScreenState extends State<EventInfoScreen> {
     super.dispose();
   }
 
-  // Widget _buildParticipantsScroller(List<ParticipantsModel> participants) {
-  //   return Padding(
-  //     padding: const EdgeInsets.only(top: 2.0),
-  //     child: SizedBox.fromSize(
-  //       size: Size.fromHeight(75.0),
-  //       child: ListView.builder(
-  //         scrollDirection: Axis.horizontal,
-  //         padding: const EdgeInsets.symmetric(horizontal: 12.0),
-  //         itemCount: participants.length,
-  //         itemBuilder: (BuildContext context, int index) {
-  //           var user = participants[index];
-  //           return Container(
-  //               margin:
-  //                   const EdgeInsets.symmetric(horizontal: 4.0, vertical: 4.0),
-  //               child: GestureDetector(
-  //                   onTap: () {
-  //                     Navigator.push(
-  //                         context,
-  //                         MaterialPageRoute(
-  //                             builder: (context) =>
-  //                                 UserInfoScreen(userId: user.userId)));
-  //                   },
-  //                   child: CircleAvatar(
-  //                     radius: 34,
-  //                     backgroundColor: EditProfileScreen.colorById(user.userId),
-  //                     child: ClipOval(
-  //                       child: SizedBox(
-  //                         width: 300,
-  //                         height: 300,
-  //                         child: user.avatar != null
-  //                             ? Image.network(
-  //                                 user.avatar,
-  //                                 fit: BoxFit.cover,
-  //                               )
-  //                             : Center(
-  //                                 child: Text(
-  //                                     '${user.firstName[0]}${user.lastName[0]}',
-  //                                     style: TextStyle(
-  //                                         fontSize: 24, color: Colors.white),
-  //                                     textAlign: TextAlign.center)),
-  //                       ),
-  //                     ),
-  //                   )));
-  //         },
-  //       ),
-  //     ),
-  //   );
-  // }
 
   @override
   Widget build(BuildContext context) {

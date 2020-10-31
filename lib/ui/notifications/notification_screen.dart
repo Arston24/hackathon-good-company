@@ -6,6 +6,9 @@ class NotificationScreen extends StatefulWidget {
 }
 
 class _NotificationScreenState extends State<NotificationScreen> {
+
+  final userNotificationsList = ["Проводится Хакатон!", "Соревнование по шахматам", "StandUp", "Конкурс"];
+
   @override
   void initState() {
     super.initState();
@@ -18,6 +21,26 @@ class _NotificationScreenState extends State<NotificationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return SingleChildScrollView(
+      child: ListView.builder(
+        itemCount: userNotificationsList.length,
+        itemBuilder: (BuildContext context, int index) {
+          return Card(
+
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Text(userNotificationsList[index]),
+                    Text("20:09")
+                  ],
+                ), // title
+
+              ],
+            ),
+          );
+        },
+      ),
+    );
   }
 }
