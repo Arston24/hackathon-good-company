@@ -82,6 +82,7 @@ class _ChooseInterestsScreenState extends State<ChooseInterestsScreen> {
           children: [
             ChipsChoice<String>.multiple(
               value: tags,
+              choiceActiveStyle: C2ChoiceStyle(color: Colors.deepPurple),
               onChanged: (val) => setState(() => tags = val),
               choiceItems: C2Choice.listFrom<String, String>(
                 source: options,
@@ -92,6 +93,7 @@ class _ChooseInterestsScreenState extends State<ChooseInterestsScreen> {
             ),
             ChipsChoice<String>.multiple(
               value: tags,
+              choiceActiveStyle: C2ChoiceStyle(color: Colors.deepPurple),
               onChanged: (val) => setState(() => tags = val),
               choiceItems: C2Choice.listFrom<String, String>(
                 source: options2,
@@ -102,6 +104,7 @@ class _ChooseInterestsScreenState extends State<ChooseInterestsScreen> {
             ),
             ChipsChoice<String>.multiple(
               value: tags,
+              choiceActiveStyle: C2ChoiceStyle(color: Colors.deepPurple),
               onChanged: (val) => setState(() => tags = val),
               choiceItems: C2Choice.listFrom<String, String>(
                 source: options3,
@@ -112,6 +115,7 @@ class _ChooseInterestsScreenState extends State<ChooseInterestsScreen> {
             ),
             ChipsChoice<String>.multiple(
               value: tags,
+              choiceActiveStyle: C2ChoiceStyle(color: Colors.deepPurple),
               onChanged: (val) => setState(() => tags = val),
               choiceItems: C2Choice.listFrom<String, String>(
                 source: options4,
@@ -122,6 +126,7 @@ class _ChooseInterestsScreenState extends State<ChooseInterestsScreen> {
             ),
             ChipsChoice<String>.multiple(
               value: tags,
+              choiceActiveStyle: C2ChoiceStyle(color: Colors.deepPurple),
               onChanged: (val) => setState(() => tags = val),
               choiceItems: C2Choice.listFrom<String, String>(
                 source: options5,
@@ -132,6 +137,7 @@ class _ChooseInterestsScreenState extends State<ChooseInterestsScreen> {
             ),
             ChipsChoice<String>.multiple(
               value: tags,
+              choiceActiveStyle: C2ChoiceStyle(color: Colors.deepPurple),
               onChanged: (val) => setState(() => tags = val),
               choiceItems: C2Choice.listFrom<String, String>(
                 source: options6,
