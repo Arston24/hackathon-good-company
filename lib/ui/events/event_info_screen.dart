@@ -77,8 +77,16 @@ class _EventInfoScreenState extends State<EventInfoScreen> {
                       alignment: Alignment.centerLeft,
                       child: Padding(
                         padding: EdgeInsets.only(left: 12.0, right: 12.0),
-                        child: Text('${snapshot.data.name}',
-                            style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.w700)),
+                        child: Row(
+                          children: [
+                            Text('${snapshot.data.name}',
+                                style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.w700)),
+                            IconButton(
+                                icon: Icon(Icons.share),
+                                onPressed: () {}
+                                )
+                          ],
+                        ),
                       ),
                     ),
                     Container(margin: EdgeInsets.only(top: 8.0, bottom: 8.0)),
@@ -204,4 +212,5 @@ class _EventInfoScreenState extends State<EventInfoScreen> {
     }
     return res;
   }
+
 }

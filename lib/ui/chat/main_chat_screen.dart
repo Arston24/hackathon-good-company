@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:hackathon_gc/ui/chat/chat_list_screen.dart';
 import 'package:hackathon_gc/ui/chat/mentor_list_screen.dart';
 
+import 'chat_screen.dart';
+import 'chat_screen_mentor.dart';
+
 class MainChatScreen extends StatefulWidget {
   @override
   _MainChatScreenState createState() => _MainChatScreenState();
@@ -29,7 +32,7 @@ class _MainChatScreenState extends State<MainChatScreen> {
             physics: NeverScrollableScrollPhysics(),
             children: [
               ChatListScreen(),
-              MentorsListScreen(),
+              PrivateChatScreenMentor(),
             ],
           ),
         ),

@@ -1,17 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class PrivateChatScreen extends StatefulWidget {
+class PrivateChatScreenMentor extends StatefulWidget {
   String userId;
-  bool mentor = false;
-
-  PrivateChatScreen({@required this.userId});
 
   @override
-  _PrivateChatScreenState createState() => _PrivateChatScreenState();
+  _PrivateChatScreenMentorState createState() => _PrivateChatScreenMentorState();
 }
 
-class _PrivateChatScreenState extends State<PrivateChatScreen> {
+class _PrivateChatScreenMentorState extends State<PrivateChatScreenMentor> {
   var textEditingController = TextEditingController();
   final ScrollController listScrollController = ScrollController();
 
@@ -30,9 +27,6 @@ class _PrivateChatScreenState extends State<PrivateChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Кирилл Петров'),
-      ),
       body: WillPopScope(
         child: Stack(
           children: <Widget>[
@@ -40,12 +34,12 @@ class _PrivateChatScreenState extends State<PrivateChatScreen> {
               children: <Widget>[
                 Flexible(
                     child: ListView.builder(
-                  padding: EdgeInsets.all(10.0),
-                  itemBuilder: (context, index) => buildItem(index),
-                  itemCount: 4,
-                  reverse: true,
-                  controller: listScrollController,
-                )),
+                      padding: EdgeInsets.all(10.0),
+                      itemBuilder: (context, index) => buildItem(index),
+                      itemCount: 4,
+                      reverse: true,
+                      controller: listScrollController,
+                    )),
                 Container(
                   child: Row(
                     children: <Widget>[
@@ -55,7 +49,7 @@ class _PrivateChatScreenState extends State<PrivateChatScreen> {
                         child: Container(
                           child: TextField(
                             style:
-                                TextStyle(color: Colors.black, fontSize: 15.0),
+                            TextStyle(color: Colors.black, fontSize: 15.0),
                             controller: textEditingController,
                             decoration: InputDecoration.collapsed(
                               hintText: 'Введите сообщение...',
@@ -104,50 +98,50 @@ class _PrivateChatScreenState extends State<PrivateChatScreen> {
     var message = messages[index];
     return index % 2 == 0
         ? Wrap(children: [
-            Align(
-                alignment: Alignment.centerRight,
-                child: Container(
-                  child: Text(
-                    message,
-                    style: TextStyle(color: Colors.black),
-                  ),
-                  padding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
-                  decoration: BoxDecoration(
-                      color: Colors.deepPurple[200],
-                      borderRadius: BorderRadius.circular(8.0)),
-                  margin: EdgeInsets.only(bottom: 10.0, left: 50.0),
-                ))
-          ])
+      Align(
+          alignment: Alignment.centerRight,
+          child: Container(
+            child: Text(
+              message,
+              style: TextStyle(color: Colors.black),
+            ),
+            padding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
+            decoration: BoxDecoration(
+                color: Colors.deepPurple[200],
+                borderRadius: BorderRadius.circular(8.0)),
+            margin: EdgeInsets.only(bottom: 10.0, left: 50.0),
+          ))
+    ])
         : Wrap(children: [
-            Row(
-              children: [
-                Container(
-                    margin: EdgeInsets.only(left: 4.0, right: 4.0, bottom: 10.0),
-                    child: CircleAvatar(
-                      radius: 16,
-                      child: ClipOval(
-                        child: SizedBox(
-                          width: 50,
-                          height: 50,
-                          child: Image.network(
-                              "https://avatars.mds.yandex.net/get-zen_doc/198554/pub_5bfcd448dfc89b00aa85f36d_5bfcd9df793dec00aa607bca/scale_2400",
-                              fit: BoxFit.cover),
-                        ),
-                      ),
-                    )),
-                Container(
-                  child: Text(
-                    message,
-                    style: TextStyle(color: Colors.white),
+      Row(
+        children: [
+          Container(
+              margin: EdgeInsets.only(left: 4.0, right: 4.0, bottom: 10.0),
+              child: CircleAvatar(
+                radius: 16,
+                child: ClipOval(
+                  child: SizedBox(
+                    width: 50,
+                    height: 50,
+                    child: Image.network(
+                        "https://avatars.mds.yandex.net/get-zen_doc/198554/pub_5bfcd448dfc89b00aa85f36d_5bfcd9df793dec00aa607bca/scale_2400",
+                        fit: BoxFit.cover),
                   ),
-                  padding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
-                  decoration: BoxDecoration(
-                      color: Colors.black26,
-                      borderRadius: BorderRadius.circular(8.0)),
-                  margin: EdgeInsets.only(left: 10.0, bottom: 10.0),
                 ),
-              ],
-            )
-          ]);
+              )),
+          Container(
+            child: Text(
+              message,
+              style: TextStyle(color: Colors.white),
+            ),
+            padding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
+            decoration: BoxDecoration(
+                color: Colors.black26,
+                borderRadius: BorderRadius.circular(8.0)),
+            margin: EdgeInsets.only(left: 10.0, bottom: 10.0),
+          ),
+        ],
+      )
+    ]);
   }
 }

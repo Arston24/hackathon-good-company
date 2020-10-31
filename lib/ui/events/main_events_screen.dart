@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:hackathon_gc/ui/events/recommend_evetns_list_screen.dart';
 
 import 'events_list_screen.dart';
@@ -32,10 +33,16 @@ class _MainEventsScreenState extends State<MainEventsScreen> {
                       Tab(text: 'Карта'),
                     ],
                   ),
-                  title: Text(
-                    'События',
-                    style:
+                  title: Row(
+                    children: [
+                      Text(
+                        'События',
+                        style:
                         TextStyle(fontSize: 24.0, fontWeight: FontWeight.w500),
+                      ),
+                      Spacer(),
+                      Icon(Icons.search),
+                    ],
                   ),
                 ),
                 body: TabBarView(
@@ -51,4 +58,6 @@ class _MainEventsScreenState extends State<MainEventsScreen> {
           )),
     );
   }
+
+
 }
