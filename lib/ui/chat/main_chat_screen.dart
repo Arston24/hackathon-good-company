@@ -1,15 +1,14 @@
 
 import 'package:flutter/material.dart';
+import 'package:hackathon_gc/ui/chat/chat_list_screen.dart';
+import 'package:hackathon_gc/ui/chat/mentor_list_screen.dart';
 
-import 'events_list_screen.dart';
-import 'events_on_map_screen.dart';
-
-class MainEventsScreen extends StatefulWidget {
+class MainChatScreen extends StatefulWidget {
   @override
-  _MainEventsScreenState createState() => _MainEventsScreenState();
+  _MainChatScreenState createState() => _MainChatScreenState();
 }
 
-class _MainEventsScreenState extends State<MainEventsScreen> {
+class _MainChatScreenState extends State<MainChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,17 +19,17 @@ class _MainEventsScreenState extends State<MainEventsScreen> {
             bottom: TabBar(
               labelStyle: TextStyle(fontSize: 16.0,fontFamily: 'Family Name', fontWeight: FontWeight.w500),  //For Selected tab
               tabs: [
-                Tab(text: 'Список'),
-                Tab(text: 'Карта'),
+                Tab(text: 'Чаты'),
+                Tab(text: 'Наставники'),
               ],
             ),
-            title: Text('События'),
+            title: Text('Сообщения'),
           ),
           body: TabBarView(
             physics: NeverScrollableScrollPhysics(),
             children: [
-              EventsListScreen(),
-              EventsOnMapScreen(),
+              ChatListScreen(),
+              MentorsListScreen(),
             ],
           ),
         ),

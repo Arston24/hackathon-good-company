@@ -16,8 +16,9 @@ class EventInfoScreen extends StatefulWidget {
 class _EventInfoScreenState extends State<EventInfoScreen> {
   final eventBloc = EventBloc();
   final formatter = DateFormat('yyyy-MM-dd hh:mm');
-  var buttonText = '';
+  var buttonText = 'Буду участвовать!';
   var textEditingController = TextEditingController();
+
   // static const LatLng _center = const LatLng(45.521563, -122.677433);
 
   @override
@@ -101,32 +102,51 @@ class _EventInfoScreenState extends State<EventInfoScreen> {
           controller: ScrollController(),
           child: StreamBuilder<EventModel>(
             stream: eventBloc.event,
-            builder: (BuildContext context,
-                AsyncSnapshot<EventModel> snapshot) {
+            builder:
+                (BuildContext context, AsyncSnapshot<EventModel> snapshot) {
               Widget child;
 
               if (snapshot.hasData) {
                 child = SingleChildScrollView(
                   child: Column(children: <Widget>[
+                    Container(
+                      height: 200.0,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: NetworkImage(snapshot.data.poster),
+                          fit: BoxFit.fill,
+                        ),
+                        shape: BoxShape.rectangle,
+                      ),
+                    ),
                     Container(margin: EdgeInsets.only(top: 16.0, bottom: 8.0)),
-                    Padding(
-                        padding: EdgeInsets.only(left: 16.0, right: 16.0),
-                        child: Center(
-                          child: Text('${snapshot.data.name}',
-                              style: TextStyle(fontSize: 22.0)),
-                        )),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 12.0, right: 12.0),
+                        child: Text('${snapshot.data.name}',
+                            style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.w700)),
+                      ),
+                    ),
                     Container(margin: EdgeInsets.only(top: 8.0, bottom: 8.0)),
-                    Padding(
-                        padding: EdgeInsets.only(left: 16.0, right: 16.0),
-                        child: Center(
-                          child: Text('${snapshot.data.description}',
-                              style: TextStyle(fontSize: 16.0)),
-                        )),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 12.0, right: 12.0),
+                        child: Text('${snapshot.data.description}',
+                            style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500)),
+                      ),
+                    ),
                     Container(margin: EdgeInsets.only(top: 8.0, bottom: 8.0)),
-                    Center(
-                      child: Text('${snapshot.data.company}',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 16.0)),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 12.0, right: 12.0),
+                        child: Text('${snapshot.data.company}',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500)),
+                      ),
                     ),
                     // Padding(
                     //   padding: EdgeInsets.all(16.0),
@@ -190,27 +210,11 @@ class _EventInfoScreenState extends State<EventInfoScreen> {
                           style: TextStyle(color: Colors.blue),
                         ),
                         onPressed: () {
-                          // eventBloc
-                          //     .isMember(widget.eventId)
-                          //     .then((isParticipant) => {
-                          //           if (isParticipant)
-                          //             {
-                          //               eventBloc.leftEvent(widget.eventId),
-                          //               eventBloc.getEventWithParticipants(
-                          //                   widget.eventId),
-                          //             }
-                          //           else
-                          //             {
-                          //               eventBloc.joinEvent(widget.eventId),
-                          //               eventBloc.getEventWithParticipants(
-                          //                   widget.eventId),
-                          //             }
-                          //         });
                           setState(() {
-                            if (buttonText == 'Присоединиться') {
-                              buttonText = 'Покинуть мероприятие';
+                            if (buttonText == 'Буду участвовать!') {
+                              buttonText = 'Покинуть событие';
                             } else {
-                              buttonText = 'Присоединиться';
+                              buttonText = 'Буду участвовать!';
                             }
                           });
                         },

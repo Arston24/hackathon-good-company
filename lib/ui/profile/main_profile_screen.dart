@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hackathon_gc/data/model/user.dart';
-import 'package:hackathon_gc/ui/bloc/bloc.dart';
+import 'package:hackathon_gc/ui/bloc/user_bloc.dart';
 import 'package:path/path.dart';
 
 class ProfileMainScreen extends StatefulWidget {
@@ -14,7 +14,8 @@ class ProfileMainScreen extends StatefulWidget {
 }
 
 class ProfileMainScreenState extends State<ProfileMainScreen> {
-  final bloc = Bloc();
+
+  final bloc = UserBloc();
 
   final profileItemList = ["Подписки", "Мероприятия", "Календарь", "Достижения", "Профессия", "Настройки" ];
   final profileSettingsIconsList = ["icon_list-with-dots.svg", "icon_flag.svg", "icon_calendar-page-empty.svg", "icon_trophy.svg", "icon_briefcase.svg", "icon_settigns.svg"];
