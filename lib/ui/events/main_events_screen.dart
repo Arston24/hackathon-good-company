@@ -89,6 +89,5 @@ class _MainEventsScreenState extends State<MainEventsScreen> {
         ),
       ),
     );
-    ;
   }
 }

@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:hackathon_gc/data/model/question.dart';
 
 class QuizPage extends StatefulWidget {
-  // final List<Question> questions;
-  // final Category category;
-
-  const QuizPage({Key key})
-      : super(key: key);
+  const QuizPage({Key key}) : super(key: key);
 
   @override
   _QuizPageState createState() => _QuizPageState();
@@ -19,15 +16,20 @@ class _QuizPageState extends State<QuizPage> {
   final Map<int, dynamic> _answers = {};
   final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
 
+  var questions = <Question>[
+    Question(
+        question: "Вы решили какую профессию выберете в будещем",
+        options: <String>["Да", "Нет"]),
+    Question(
+        question: "Вы решили какую профессию выберете в будещем",
+        options: <String>["Да", "Нет"]),
+    Question(
+        question: "Вы решили какую профессию выберете в будещем",
+        options: <String>["Да", "Нет"])
+  ];
+
   @override
   Widget build(BuildContext context) {
-    // Question question = widget.questions[_currentIndex];
-    // final List<dynamic> options = question.incorrectAnswers;
-    // if (!options.contains(question.correctAnswer)) {
-    //   options.add(question.correctAnswer);
-    //   options.shuffle();
-    // }
-
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
@@ -87,7 +89,6 @@ class _QuizPageState extends State<QuizPage> {
                             });
                           },
                         ),
-
                         RadioListTile(
                           title: Text(
                             "What?",
