@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:hackathon_gc/data/model/user.dart';
 import 'package:hackathon_gc/ui/bloc/bloc.dart';
 import 'package:path/path.dart';
@@ -13,9 +14,10 @@ class ProfileMainScreen extends StatefulWidget {
 }
 
 class ProfileMainScreenState extends State<ProfileMainScreen> {
-
   final bloc = Bloc();
 
+  final profileItemList = ["Подписки", "Мероприятия", "Календарь", "Достижения", "Профессия", "Настройки" ];
+  final profileSettingsIconsList = ["icon_list-with-dots.svg", "icon_flag.svg", "icon_calendar-page-empty.svg", "icon_trophy.svg", "icon_briefcase.svg", "icon_settigns.svg"];
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -29,164 +31,224 @@ class ProfileMainScreenState extends State<ProfileMainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Профиль'),
-        actions: <Widget>[
-          Padding(
-              padding: EdgeInsets.only(right: 20.0),
-              // child: GestureDetector(
-              //   onTap: () {
-              //     Navigator.push(
-              //         context,
-              //         MaterialPageRoute(builder: (context) => EditProfileScreen()));
-              //   },
-              //   child: Icon(
-              //     Icons.edit,
-              //     size: 26.0,
-              //   ),
-              // )
-          ),
-          Padding(
-              padding: EdgeInsets.only(right: 20.0),
-              child: GestureDetector(
-                onTap: () {
-
-                },
-                child: Icon(
-                  Icons.exit_to_app,
-                  size: 26.0,
-                ),
-              )),
-        ],
-      ),
-      body: profile()
-    );
+        // appBar: AppBar(
+        //   title: Text('Профиль'),
+        //   actions: <Widget>[
+        //     Padding(
+        //       padding: EdgeInsets.only(right: 20.0),
+        //       // child: GestureDetector(
+        //       //   onTap: () {
+        //       //     Navigator.push(
+        //       //         context,
+        //       //         MaterialPageRoute(builder: (context) => EditProfileScreen()));
+        //       //   },
+        //       //   child: Icon(
+        //       //     Icons.edit,
+        //       //     size: 26.0,
+        //       //   ),
+        //       // )
+        //     ),
+        //     Padding(
+        //         padding: EdgeInsets.only(right: 20.0),
+        //         child: GestureDetector(
+        //           onTap: () {},
+        //           child: Icon(
+        //             Icons.exit_to_app,
+        //             size: 26.0,
+        //           ),
+        //         )),
+        //   ],
+        // ),
+        body: SingleChildScrollView(
+            // <-- wrap this around
+            child: profile()));
   }
 
   Widget profile() {
     print("profile");
     return FutureBuilder<UserModel>(
       future: bloc.getCurrentUser(),
-      builder: (BuildContext context,
-      AsyncSnapshot<UserModel> snapshot) {
+      builder: (BuildContext context, AsyncSnapshot<UserModel> snapshot) {
         if (snapshot.hasData) {
           print("(snapshot.hasData)");
+
           return Column(
             children: [
               Container(
-                  width: 100,
-                  height: 100,
-                  child: IconButton(
-                    icon: Icon(FontAwesome.user_o),
-                  )
+                width: double.infinity,
+                height: 225,
+                child: Stack(
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      height: 175,
+                      decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                              begin: Alignment.centerLeft,
+                              end: Alignment.centerRight,
+                              colors: [
+                            Color.fromRGBO(0, 245, 160, 1),
+                            Color.fromRGBO(0, 217, 245, 1)
+                          ])),
+                    ),
+                    Positioned(
+                      top: 75,
+                      left: 120,
+                      child: Container(
+                        width: 150,
+                        height: 150,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(100.0),
+                          color: Color(0xff5845D1),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
               ),
-              Row(children: [Text("Имя: ", style: TextStyle(fontWeight: FontWeight.bold), ), Text("${snapshot.data.firstName}")],),
-              Row(children: [Text("Фамилия: ", style: TextStyle(fontWeight: FontWeight.bold)), Text("${snapshot.data.second_name}")],),
-              Row(children: [Text("Город проживания: ", style: TextStyle(fontWeight: FontWeight.bold)), Text("${snapshot.data.city}")],),
-              Row(children: [Text("Телефон: ", style: TextStyle(fontWeight: FontWeight.bold)), Text("snapshot.data.phone")],),
-              Row(children: [Text("Ваш ID: ", style: TextStyle(fontWeight: FontWeight.bold)), Text("snapshot.data.userId")],),
-              Column(
-                children: [
-                  Text("О себе:"),
-                  Padding(padding: EdgeInsets.all(5)),
-                  Text("Текст обо мне и о тебе и тебе,"
-                      " Текст обо мне и о тебе и тебе, Текст обо мне и о тебе и тебе, Текст обо мне и о тебе и тебе,"
-                      " Текст обо мне и о тебе и тебе, Текст обо мне и о тебе и тебе, Текст обо мне и о тебе и тебе")
-                ],
+              // Padding(padding: EdgeInsets.only(top: 15)),
+              Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                            "Кличко Павлович Александр",
+                            // "${snapshot.data.firstName}",
+                            style:
+                            TextStyle(fontWeight: FontWeight.bold, fontSize: 24))
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                            "ID: Rat6969",
+                            // "ID: ${snapshot.data.userId}",
+                            style:
+                            TextStyle(fontWeight: FontWeight.w500, fontSize: 15))
+                      ],
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(top: 15),
+                      child: MaterialButton(
+                        minWidth: 220,
+                        height: 40,
+                        child: Text("Редактировать аккаунт",
+                            style:
+                            TextStyle(fontWeight: FontWeight.w600, fontSize: 15)),
+                        // color: Color(0xffF13B5E),
+                        color: Color(0xffF13B5E),
+                        textColor: Colors.white,
+                        onPressed: () {},
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(6)),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 15),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("За Октябрь",
+                            style:
+                            TextStyle(fontWeight: FontWeight.w600, fontSize: 25))
+                      ],
+                    ),
+                    Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
+
+                      children: [
+                        SvgPicture.asset("assets/images/Ellipse1.svg"),
+                        // Padding(
+                        //   padding: EdgeInsets.only(left: 20),
+                        // ),
+                        SvgPicture.asset("assets/images/Ellipse2.svg"),
+                        // Padding(
+                        //   padding: EdgeInsets.only(left: 20),
+                        // ),
+                        SvgPicture.asset("assets/images/Ellipse3.svg"),
+                      ],
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 45),
+                    ),
+                    Container(
+                      width: double.infinity,
+                      height: 180,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.0),
+                        color: Color(0xff00E0C1),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          SvgPicture.asset("assets/images/icon_email.svg"),
+                          Text("Твой e-mail не подтвержден",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600, fontSize: 20)),
+                          Text("Отправить письмо повторно?",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600, fontSize: 15))
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 35),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("Мой аккаунт",
+                            style:
+                            TextStyle(fontWeight: FontWeight.w600, fontSize: 25))
+                      ],
+                    ),
+                    Container(
+                      height: 420,
+
+                      child: ListView.builder(
+                        itemCount: profileItemList.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Container(
+                            height: 65,
+                            child: GestureDetector(
+                              child: Card(
+                                shape: RoundedRectangleBorder(
+                                    side: BorderSide(color: Colors.black, width: 2),
+                                    borderRadius:
+                                    BorderRadius.all(Radius.circular(15.0))),
+                                child: Row(
+                                  children: [
+                                    Padding(padding: EdgeInsets.only(left: 10)),
+                                    Text(profileItemList[index], style: TextStyle(
+                                        fontWeight: FontWeight.w600, fontSize: 20)),
+                                    Spacer(),
+                                    SvgPicture.asset("assets/images/" + profileSettingsIconsList[index]),
+                                    Padding(padding: EdgeInsets.only(right: 10)),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    )
+                  ],
+                )
               )
+
             ],
           );
         } else {
           print("(snapshot.hasNOData)");
           return Center(child: CircularProgressIndicator());
-        };
+        }
+        ;
       },
-
     );
-
   }
-  // Widget buildInfo(AsyncSnapshot<UserModel> snapshot, BuildContext context) {
-  //   return Scaffold(
-  //     body: SingleChildScrollView(
-  //       child: Column(children: <Widget>[
-  //         Container(margin: EdgeInsets.only(top: 16.0, bottom: 8.0)),
-  //         CircleAvatar(
-  //           radius: 84,
-  //           backgroundColor: EditProfileScreen.colorById(snapshot.data.userId),
-  //           child: ClipOval(
-  //             child: SizedBox(
-  //               width: 300,
-  //               height: 300,
-  //               child: snapshot.data.avatar != null
-  //                   ? Image.network(
-  //                 snapshot.data.avatar,
-  //                 fit: BoxFit.cover,
-  //               )
-  //                   : Center(
-  //                   child: Text(
-  //                       '${snapshot.data.firstName[0]}${snapshot.data.lastName[0]}',
-  //                       style: TextStyle(fontSize: 44, color: Colors.white),
-  //                       textAlign: TextAlign.center)),
-  //             ),
-  //           ),
-  //         ),
-  //         Container(margin: EdgeInsets.only(top: 16.0, bottom: 8.0)),
-  //         Center(
-  //           child: Text('${snapshot.data.firstName} ${snapshot.data.lastName}',
-  //               style: TextStyle(fontSize: 22.0)),
-  //         ),
-  //         Container(margin: EdgeInsets.only(top: 8.0, bottom: 8.0)),
-  //         Padding(
-  //             padding: EdgeInsets.all(16.0),
-  //             child: Center(
-  //               child: Text('${snapshot.data.aboutMe}',
-  //                   style: TextStyle(fontSize: 16.0)),
-  //             )),
-  //         Container(margin: EdgeInsets.only(top: 8.0, bottom: 8.0)),
-  //         Center(
-  //           child: Text('${snapshot.data.company}',
-  //               style: TextStyle(fontSize: 16.0)),
-  //         ),
-  //         Padding(
-  //           padding: EdgeInsets.only(left: 12.0, right: 12.0),
-  //           child:
-  //           Column(crossAxisAlignment: CrossAxisAlignment.start, children: <
-  //               Widget>[
-  //             Container(margin: EdgeInsets.only(top: 8.0)),
-  //             Text('Я ищу (каких людей/услуги/товары):',
-  //                 style:
-  //                 TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
-  //             Container(margin: EdgeInsets.only(top: 8.0)),
-  //             Text('${snapshot.data.interests}',
-  //                 style: TextStyle(fontSize: 16.0)),
-  //             Container(margin: EdgeInsets.only(top: 16.0)),
-  //             Text('Чем могу быть полезен:',
-  //                 style:
-  //                 TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
-  //             Container(margin: EdgeInsets.only(top: 8.0)),
-  //             Text('${snapshot.data.useful}', style: TextStyle(fontSize: 16.0)),
-  //           ]),
-  //         ),
-  //         Row(
-  //           children: [
-  //             Container(padding: EdgeInsets.only(left: 12.0)),
-  //             Text('Ночной режим', style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
-  //             Container(padding: EdgeInsets.only(left: 8.0)),
-  //             Switch(
-  //                 value: ThemeController.of(context).currentTheme == 'dark',
-  //                 onChanged: (bool newValue) {
-  //                   setState(() {
-  //                     if(newValue == true){
-  //                       ThemeController.of(context).setTheme('dark');
-  //                     } else{
-  //                       ThemeController.of(context).setTheme('light');
-  //                     }
-  //                   });
-  //                 })
-  //           ],
-  //         )
-  //       ]),
-  //     ),
-  //   );
-  // }
 }

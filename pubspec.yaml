@@ -39,6 +39,7 @@ dependencies:
   firebase_storage: ^4.0.1
   shared_preferences: ^0.5.8
   flutter_icons: ^1.1.0
+  flutter_svg: ^0.19.0
 
 dev_dependencies:
   flutter_test:
@@ -55,10 +56,22 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
+  assets:
+    - assets/images/icon_email.svg
+    - assets/images/icon_flag.svg
+    - assets/images/icon_list-with-dots.svg
+    - assets/images/icon_calendar-page-empty.svg
+    - assets/images/icon_trophy.svg
+    - assets/images/icon_briefcase.svg
+    - assets/images/icon_settigns.svg
+    - assets/images/Ellipse1.svg
+    - assets/images/Ellipse2.svg
+    - assets/images/Ellipse3.svg
+
   fonts:
-    - family: OpenSans
+    - family: TTCommons
       fonts:
-        - asset: assets/fonts/OpenSans-Regular.ttf
+        - asset: assets/fonts/TTCommons-Regular.ttf
 
   # To add assets to your application, add an assets section, like this:
   # assets:

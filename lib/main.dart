@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(fontFamily: 'OpenSans'),
+      theme: ThemeData(fontFamily: 'TTCommons'),
       home: IntroScreen(),
     );
   }
