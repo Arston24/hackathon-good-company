@@ -45,6 +45,9 @@ class _RecommendsEventsListScreenState extends State<RecommendsEventsListScreen>
                         );
                       },
                       child: Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
                           child: Stack(
                             children: [
                               Column(
