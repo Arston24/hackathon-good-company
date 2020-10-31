@@ -9,12 +9,14 @@ class UserModel {
   String city;
   String phone;
   String about;
+  String avatar;
   UserModel(
       {this.userId,
         this.firstName,
         this.second_name,
         this.email,
         this.about,
+        this.avatar,
         this.phone,
         this.city});
 
@@ -35,6 +37,7 @@ UserModel UserModelFromJson(Map<dynamic, dynamic> json) {
     userId: json['userId'] as String,
     firstName: json['firstName'] as String,
     second_name: json['lastName'] as String,
+    avatar: json['avatar'] as String,
     city: json['interests'] as String,
   );
 }
@@ -43,7 +46,8 @@ Map<String, dynamic> UserModelToJson(UserModel instance) => <String, dynamic>{
   'userId': instance.userId,
   'firstName': instance.firstName,
   'second_name': instance.second_name,
-  'locality': instance.city,
+  'city': instance.city,
+  'avatar': instance.avatar,
   'phone': instance.phone,
   'about': instance.about,
   'email': instance.email,
