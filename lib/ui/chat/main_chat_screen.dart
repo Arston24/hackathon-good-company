@@ -20,7 +20,7 @@ class _MainChatScreenState extends State<MainChatScreen> {
               labelStyle: TextStyle(fontSize: 16.0,fontFamily: 'Family Name', fontWeight: FontWeight.w500),  //For Selected tab
               tabs: [
                 Tab(text: 'Чаты'),
-                Tab(text: 'Наставники'),
+                Tab(text: 'Наставник'),
               ],
             ),
             title: Text('Сообщения'),

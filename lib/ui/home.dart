@@ -24,7 +24,7 @@ class _HomeState extends State<Home> {
     MainEventsScreen(),
     MainFavoriteScreen(),
     MainChatScreen(),
-    NotificationScreen(),
+    // NotificationScreen(),
     ProfileMainScreen()
   ];
 
@@ -58,44 +58,44 @@ class _HomeState extends State<Home> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.favorite),
-            title: Text('Избранные'),
+            title: Text('Мои события'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.message),
             title: Text('Сообщения'),
           ),
-          BottomNavigationBarItem(
-            icon: Stack(
-              children: <Widget>[
-                Icon(Icons.notifications),
-                Positioned(
-                  right: 0,
-                  child: unreadNotifications > 0
-                      ? Container(
-                          padding: EdgeInsets.all(1),
-                          decoration: BoxDecoration(
-                            color: Colors.red,
-                            borderRadius: BorderRadius.circular(6),
-                          ),
-                          constraints: BoxConstraints(
-                            minWidth: 12,
-                            minHeight: 12,
-                          ),
-                          child: Text(
-                            '$unreadNotifications',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 8,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                        )
-                      : Container(),
-                )
-              ],
-            ),
-            title: Text('Уведомления'),
-          ),
+          // BottomNavigationBarItem(
+          //   icon: Stack(
+          //     children: <Widget>[
+          //       Icon(Icons.notifications),
+          //       Positioned(
+          //         right: 0,
+          //         child: unreadNotifications > 0
+          //             ? Container(
+          //                 padding: EdgeInsets.all(1),
+          //                 decoration: BoxDecoration(
+          //                   color: Colors.red,
+          //                   borderRadius: BorderRadius.circular(6),
+          //                 ),
+          //                 constraints: BoxConstraints(
+          //                   minWidth: 12,
+          //                   minHeight: 12,
+          //                 ),
+          //                 child: Text(
+          //                   '$unreadNotifications',
+          //                   style: TextStyle(
+          //                     color: Colors.white,
+          //                     fontSize: 8,
+          //                   ),
+          //                   textAlign: TextAlign.center,
+          //                 ),
+          //               )
+          //             : Container(),
+          //       )
+          //     ],
+          //   ),
+          //   title: Text('Уведомления'),
+          // ),
           BottomNavigationBarItem(
               icon: Icon(Icons.person), title: Text('Профиль'))
         ],

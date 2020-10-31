@@ -94,7 +94,7 @@ class ProfileMainScreenState extends State<ProfileMainScreen> {
                     ),
                     Positioned(
                       top: 75,
-                      left: 120,
+                      left: 140,
                       child: Container(
                         width: 150,
                         height: 150,
