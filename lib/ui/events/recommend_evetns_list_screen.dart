@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:hackathon_gc/data/model/event.dart';
 import 'package:hackathon_gc/ui/auth/choose_interests_screen.dart';
@@ -6,12 +8,12 @@ import 'package:hackathon_gc/ui/quiz/quiz_screen.dart';
 
 import 'event_info_screen.dart';
 
-class EventsListScreen extends StatefulWidget {
+class RecommendsEventsListScreen extends StatefulWidget {
   @override
-  _EventsListScreenState createState() => _EventsListScreenState();
+  _RecommendsEventsListScreenState createState() => _RecommendsEventsListScreenState();
 }
 
-class _EventsListScreenState extends State<EventsListScreen> {
+class _RecommendsEventsListScreenState extends State<RecommendsEventsListScreen> {
   var eventBloc = EventBloc();
 
   @override
@@ -29,7 +31,7 @@ class _EventsListScreenState extends State<EventsListScreen> {
             (BuildContext context, AsyncSnapshot<List<EventModel>> snapshot) {
           if (snapshot.hasData) {
             return ListView.separated(
-              itemCount: snapshot.data.length,
+              itemCount: snapshot.data.length - 2,
               itemBuilder: (BuildContext context, int index) {
                 return Padding(
                     padding: EdgeInsets.only(left: 8, right: 8, top: 8.0),
@@ -63,7 +65,7 @@ class _EventsListScreenState extends State<EventsListScreen> {
                               ),
                               Row(
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                MainAxisAlignment.spaceBetween,
                                 children: [
                                   Flexible(
                                     child: Container(

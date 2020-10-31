@@ -101,6 +101,10 @@ class ProfileMainScreenState extends State<ProfileMainScreen> {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(100.0),
                           color: Color(0xff5845D1),
+                          image: DecorationImage(
+                            image: NetworkImage(snapshot.data.avatar),
+                            fit: BoxFit.cover,
+                          )
                         ),
                       ),
                     )

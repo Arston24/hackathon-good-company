@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hackathon_gc/data/model/user.dart';
 import 'package:hackathon_gc/data/user_repository.dart';
+import 'package:hackathon_gc/ui/auth/choose_interests_screen.dart';
 
 import '../home.dart';
 
@@ -138,7 +139,7 @@ class _RegistrationScreen extends State<RegistrationScreen> {
                       userRepository.createNewUser(user);
                       Navigator.pushAndRemoveUntil(
                           context,
-                          MaterialPageRoute(builder: (context) => Home()),
+                          MaterialPageRoute(builder: (context) => ChooseInterestsScreen()),
                           (Route<dynamic> route) => false);
                     },
                     child: Text('Зарегистрироваться'),
