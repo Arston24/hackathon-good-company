@@ -16,6 +16,8 @@
     <application
         android:label="hackathon_gc"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAO640Pk3ZAUsSFektA4U5UscbTECb80Ac"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

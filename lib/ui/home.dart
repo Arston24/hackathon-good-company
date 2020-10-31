@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:hackathon_gc/ui/events/main_events_screen.dart';
 import 'package:hackathon_gc/ui/profile/main_profile_screen.dart';
 
 import 'contacts/main_contacts_screen.dart';
-import 'events/main_events_screen.dart';
+import 'events/events_list_screen.dart';
 import 'notifications/notification_screen.dart';
 
 class Home extends StatefulWidget {
@@ -41,7 +42,7 @@ class _HomeState extends State<Home> {
       body: _children[_currentIndex], // new
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.white,
-        selectedItemColor: Colors.blue,
+        selectedItemColor: Colors.deepPurple[400],
         unselectedItemColor: Colors.grey,
         currentIndex: _currentIndex,
         // this will be set when a new tab is tapped
@@ -50,7 +51,7 @@ class _HomeState extends State<Home> {
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.event),
-            title: Text('Мероприятия'),
+            title: Text('События'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.group),

@@ -39,6 +39,9 @@ dependencies:
   firebase_storage: ^4.0.1
   shared_preferences: ^0.5.8
   flutter_icons: ^1.1.0
+  google_maps_flutter: ^0.5.28
+  google_map_location_picker: ^3.3.3
+  geolocator: ^5.3.1
 
 dev_dependencies:
   flutter_test:
