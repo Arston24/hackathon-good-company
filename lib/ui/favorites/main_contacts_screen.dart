@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class ContactsListScreen extends StatefulWidget {
+class FavoritesListScreen extends StatefulWidget {
   @override
-  _ContactsListScreenState createState() => _ContactsListScreenState();
+  _FavoritesListScreenState createState() => _FavoritesListScreenState();
 }
 
-class _ContactsListScreenState extends State<ContactsListScreen> {
+class _FavoritesListScreenState extends State<FavoritesListScreen> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -20,7 +20,7 @@ class _ContactsListScreenState extends State<ContactsListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Контакты'),
+          title: Text('Избранные'),
         ),
         body: Container());
   }

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:hackathon_gc/data/model/user.dart';
-import 'package:hackathon_gc/ui/bloc/bloc.dart';
+import 'package:hackathon_gc/ui/bloc/user_bloc.dart';
 import 'package:path/path.dart';
 
 class ProfileMainScreen extends StatefulWidget {
@@ -14,7 +14,7 @@ class ProfileMainScreen extends StatefulWidget {
 
 class ProfileMainScreenState extends State<ProfileMainScreen> {
 
-  final bloc = Bloc();
+  final bloc = UserBloc();
 
   @override
   void didChangeDependencies() {
