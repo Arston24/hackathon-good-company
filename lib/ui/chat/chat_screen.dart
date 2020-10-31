@@ -118,16 +118,34 @@ class _PrivateChatScreenState extends State<PrivateChatScreen> {
                 ))
           ])
         : Wrap(children: [
-            Container(
-              child: Text(
-                message,
-                style: TextStyle(color: Colors.white),
-              ),
-              padding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
-              decoration: BoxDecoration(
-                  color: Colors.black26,
-                  borderRadius: BorderRadius.circular(8.0)),
-              margin: EdgeInsets.only(left: 10.0, bottom: 10.0),
+            Row(
+              children: [
+                Container(
+                    margin: EdgeInsets.only(left: 4.0, right: 4.0, bottom: 10.0),
+                    child: CircleAvatar(
+                      radius: 16,
+                      child: ClipOval(
+                        child: SizedBox(
+                          width: 50,
+                          height: 50,
+                          child: Image.network(
+                              "https://avatars.mds.yandex.net/get-zen_doc/198554/pub_5bfcd448dfc89b00aa85f36d_5bfcd9df793dec00aa607bca/scale_2400",
+                              fit: BoxFit.cover),
+                        ),
+                      ),
+                    )),
+                Container(
+                  child: Text(
+                    message,
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  padding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
+                  decoration: BoxDecoration(
+                      color: Colors.black26,
+                      borderRadius: BorderRadius.circular(8.0)),
+                  margin: EdgeInsets.only(left: 10.0, bottom: 10.0),
+                ),
+              ],
             )
           ]);
   }
