@@ -48,54 +48,83 @@ class _FavoriteEventsScreenState extends State<FavoriteEventsScreen> {
                           );
                         },
                         child: Card(
-                            child: Column(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            child: Stack(
                               children: [
-                                Container(
-                                  height: 200.0,
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(8.0),
-                                        topRight: Radius.circular(8.0)),
-                                    image: DecorationImage(
-                                      image: NetworkImage(element.poster),
-                                      fit: BoxFit.cover,
-                                    ),
-                                    shape: BoxShape.rectangle,
-                                  ),
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                Column(
                                   children: [
-                                    Flexible(
-                                      child: Container(
-                                          padding:
-                                          EdgeInsets.only(left: 8.0, right: 8.0),
-                                          child: Text("${element.name}",
-                                              maxLines: 2,
-                                              overflow: TextOverflow.ellipsis,
-                                              style: TextStyle(
-                                                  fontSize: 14.0,
-                                                  fontWeight: FontWeight.w700))),
+                                    Stack(
+                                      children: [
+                                        Container(
+                                          height: 200.0,
+                                          width: double.infinity,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(10.0),
+                                            image: DecorationImage(
+                                              image: NetworkImage(
+                                                  element.poster),
+                                              fit: BoxFit.fill,
+                                            ),
+                                            shape: BoxShape.rectangle,
+                                          ),
+                                        ),
+                                        Positioned(
+                                            top: -5,
+                                            right: 10,
+                                            child: Container(
+                                                width: 60,
+                                                height: 60,
+                                                child: Image(
+                                                    image: AssetImage(
+                                                        "assets/images/avatar3.png"))))
+                                      ],
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(1.0),
-                                      child: IconButton(
-                                          icon: Icon(Icons.favorite, color: Colors.red,),
-                                          onPressed: null),
-                                    )
                                   ],
                                 ),
-                                Align(
-                                  alignment: Alignment.topLeft,
-                                  child: Padding(
-                                      padding: EdgeInsets.only(
-                                          left: 8.0, right: 8.0, bottom: 8.0),
-                                      child: Text("${element.description}",
-                                          maxLines: 3,
-                                          style: TextStyle(
-                                              fontSize: 14.0,
-                                              fontWeight: FontWeight.w400))),
+                                Positioned(
+                                    bottom: 0,
+                                    left: 0,
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                            padding: EdgeInsets.only(left: 4.0),
+                                            child: Text(
+                                                "${element.name}",
+                                                style: TextStyle(
+                                                    fontSize: 25.0,
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.w800))),
+                                        Padding(
+                                            padding: EdgeInsets.only(
+                                                left: 4.0, right: 8.0, bottom: 8.0),
+                                            child: Text(
+                                                "${element.description}",
+                                                style: TextStyle(
+                                                    fontSize: 15.0,
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.w400)))
+                                      ],
+                                    )),
+                                Positioned(
+                                  bottom: 0,
+                                  right: 10,
+                                  child: MaterialButton(
+                                    minWidth: 150,
+                                    height: 35,
+                                    child: Text("Записаться",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w900,
+                                            fontSize: 20)),
+                                    // color: Color(0xffF13B5E),
+                                    color: Color(0xffE8E8E8),
+                                    textColor: Color(0xffF13B5E),
+                                    onPressed: () {},
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(6)),
+                                  ),
                                 )
                               ],
                             )),
