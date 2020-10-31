@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(fontFamily: 'TTCommons', primaryColor: Colors.deepPurple[300], primarySwatch: Colors.deepPurple),
+      theme: ThemeData(fontFamily: 'TTCommons', primaryColor: Colors.white, primarySwatch: Colors.deepPurple),
       home: IntroScreen(),
     );
   }

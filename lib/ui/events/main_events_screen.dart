@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:hackathon_gc/ui/events/recommend_evetns_list_screen.dart';
 
@@ -20,14 +19,17 @@ class _MainEventsScreenState extends State<MainEventsScreen> {
           appBar: AppBar(
             bottom: TabBar(
               isScrollable: true,
-              labelStyle: TextStyle(fontSize: 16.0,fontFamily: 'Family Name', fontWeight: FontWeight.w500),  //For Selected tab
+              labelStyle: TextStyle(
+                  fontSize: 16.0,
+                  fontFamily: 'Family Name',
+                  fontWeight: FontWeight.w500), //For Selected tab
               tabs: [
                 Tab(text: 'Список'),
                 Tab(text: 'Рекомендации'),
                 Tab(text: 'Карта'),
               ],
             ),
-            title: Text('События'),
+            title: Text('События', style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.w500),),
           ),
           body: TabBarView(
             physics: NeverScrollableScrollPhysics(),
@@ -39,6 +41,6 @@ class _MainEventsScreenState extends State<MainEventsScreen> {
           ),
         ),
       ),
-    );;
+    );
   }
 }
