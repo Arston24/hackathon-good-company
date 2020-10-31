@@ -4,7 +4,8 @@ import 'package:hackathon_gc/ui/events/main_events_screen.dart';
 import 'package:hackathon_gc/ui/profile/main_profile_screen.dart';
 
 import 'events/events_list_screen.dart';
-import 'favorites/main_contacts_screen.dart';
+import 'favorites/favorite_events_screen.dart';
+import 'favorites/main_favorites_screen.dart';
 import 'notifications/notification_screen.dart';
 
 class Home extends StatefulWidget {
@@ -21,7 +22,7 @@ class _HomeState extends State<Home> {
 
   final List<Widget> _children = [
     MainEventsScreen(),
-    FavoritesListScreen(),
+    MainFavoriteScreen(),
     MainChatScreen(),
     NotificationScreen(),
     ProfileMainScreen()

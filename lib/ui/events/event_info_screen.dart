@@ -16,7 +16,7 @@ class EventInfoScreen extends StatefulWidget {
 class _EventInfoScreenState extends State<EventInfoScreen> {
   final eventBloc = EventBloc();
   final formatter = DateFormat('yyyy-MM-dd hh:mm');
-  var buttonText = 'Присоединиться';
+  var buttonText = 'Буду участвовать!';
   var textEditingController = TextEditingController();
 
   // static const LatLng _center = const LatLng(45.521563, -122.677433);
@@ -211,10 +211,10 @@ class _EventInfoScreenState extends State<EventInfoScreen> {
                         ),
                         onPressed: () {
                           setState(() {
-                            if (buttonText == 'Присоединиться') {
-                              buttonText = 'Покинуть мероприятие';
+                            if (buttonText == 'Буду участвовать!') {
+                              buttonText = 'Покинуть событие';
                             } else {
-                              buttonText = 'Присоединиться';
+                              buttonText = 'Буду участвовать!';
                             }
                           });
                         },
