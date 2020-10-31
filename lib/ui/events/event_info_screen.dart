@@ -52,146 +52,101 @@ class _EventInfoScreenState extends State<EventInfoScreen> {
         body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           controller: ScrollController(),
-          child: StreamBuilder<EventModel>(
-            stream: eventBloc.event,
-            builder:
-                (BuildContext context, AsyncSnapshot<EventModel> snapshot) {
-              Widget child;
+          child:
 
-              if (snapshot.hasData) {
-                child = SingleChildScrollView(
-                  child: Column(children: <Widget>[
-                    Container(
-                      height: 200.0,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: NetworkImage(snapshot.data.poster),
-                          fit: BoxFit.cover,
-                        ),
-                        shape: BoxShape.rectangle,
-                      ),
-                    ),
-                    Container(margin: EdgeInsets.only(top: 16.0, bottom: 8.0)),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Padding(
-                        padding: EdgeInsets.only(left: 12.0, right: 12.0),
-                        child: Row(
-                          children: [
-                            Text('${snapshot.data.name}',
-                                style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.w700)),
-                            IconButton(
-                                icon: Icon(Icons.share),
-                                onPressed: () {}
-                                )
-                          ],
-                        ),
-                      ),
-                    ),
-                    Container(margin: EdgeInsets.only(top: 8.0, bottom: 8.0)),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Padding(
-                        padding: EdgeInsets.only(left: 12.0, right: 12.0),
-                        child: Text('${snapshot.data.description}',
-                            style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500)),
-                      ),
-                    ),
-                    Container(margin: EdgeInsets.only(top: 8.0, bottom: 8.0)),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 12.0, right: 12.0),
-                        child: Text('${snapshot.data.company}',
-                            textAlign: TextAlign.left,
-                            style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500)),
-                      ),
-                    ),
-                    // Padding(
-                    //   padding: EdgeInsets.all(16.0),
-                    //   child: Column(
-                    //       crossAxisAlignment: CrossAxisAlignment.start,
-                    //       children: <Widget>[
-                    //         Container(margin: EdgeInsets.only(top: 8.0)),
-                    //         Text('Адрес:',
-                    //             style: TextStyle(
-                    //                 fontSize: 16.0,
-                    //                 fontWeight: FontWeight.bold)),
-                    //         Container(margin: EdgeInsets.only(top: 8.0)),
-                    //         Text('${snapshot.data.eventModel.address}',
-                    //             style: TextStyle(fontSize: 16.0)),
-                    //         Container(margin: EdgeInsets.only(top: 16.0)),
-                    //         Text('Начало:',
-                    //             style: TextStyle(
-                    //                 fontSize: 16.0,
-                    //                 fontWeight: FontWeight.bold)),
-                    //         Container(margin: EdgeInsets.only(top: 8.0)),
-                    //         Text(
-                    //             '${formatter.format(snapshot.data.eventModel.start)}',
-                    //             style: TextStyle(fontSize: 16.0)),
-                    //         Container(margin: EdgeInsets.only(top: 8.0)),
-                    //         Text('Завершение:',
-                    //             style: TextStyle(
-                    //                 fontSize: 16.0,
-                    //                 fontWeight: FontWeight.bold)),
-                    //         Container(margin: EdgeInsets.only(top: 8.0)),
-                    //         Text(
-                    //             '${formatter.format(snapshot.data.eventModel.end)}',
-                    //             style: TextStyle(fontSize: 16.0)),
-                    //         Container(margin: EdgeInsets.only(top: 16.0)),
-                    //         RichText(
-                    //           text: TextSpan(
-                    //               style: TextStyle(
-                    //                   decoration: TextDecoration.underline),
-                    //               text: 'Участники:',
-                    //               recognizer: TapGestureRecognizer()
-                    //                 ..onTap = () {
-                    //                   // Navigator.push(
-                    //                   //     context,
-                    //                   //     MaterialPageRoute(
-                    //                   //         builder: (context) =>
-                    //                   //             ParticipantsListScreen(
-                    //                   //                 eventId: snapshot.data
-                    //                   //                     .eventModel.id)));
-                    //                 }),
-                    //         ),
-                    //       ]),
-                    // ),
-                    // _buildParticipantsScroller(snapshot.data.participants),
-                    Container(margin: EdgeInsets.only(top: 12.0, bottom: 12.0)),
-                    Container(
-                      padding: EdgeInsets.only(left: 12.0, right: 12.0),
-                      width: double.infinity,
-                      child: OutlineButton(
-                        borderSide: BorderSide(color: Colors.blue),
-                        child: Text(
-                          '$buttonText',
-                          style: TextStyle(color: Colors.blue),
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            if (buttonText == 'Буду участвовать!') {
-                              buttonText = 'Покинуть событие';
-                            } else {
-                              buttonText = 'Буду участвовать!';
-                            }
-                          });
-                        },
-                      ),
-                    ),
+          Image(
+              image: AssetImage(
+                  "assets/images/Frame12.png"))
 
-                    // Edit text
-                  ]),
-                );
-              } else if (snapshot.hasError) {
-                child = Center();
-              } else {
-                child = Center();
-              }
-              return child;
-            },
-          ),
+          // StreamBuilder<EventModel>(
+          //   stream: eventBloc.event,
+          //   builder:
+          //       (BuildContext context, AsyncSnapshot<EventModel> snapshot) {
+          //     Widget child;
+          //
+          //     if (snapshot.hasData) {
+          //       child = SingleChildScrollView(
+          //         child: Column(children: <Widget>[
+          //           Container(
+          //             height: 200.0,
+          //             width: double.infinity,
+          //             decoration: BoxDecoration(
+          //               image: DecorationImage(
+          //                 image: NetworkImage(snapshot.data.poster),
+          //                 fit: BoxFit.cover,
+          //               ),
+          //               shape: BoxShape.rectangle,
+          //             ),
+          //           ),
+          //           Container(margin: EdgeInsets.only(top: 16.0, bottom: 8.0)),
+          //           Align(
+          //             alignment: Alignment.centerLeft,
+          //             child: Padding(
+          //               padding: EdgeInsets.only(left: 12.0, right: 12.0),
+          //               child: Row(
+          //                 children: [
+          //                   Text('${snapshot.data.name}',
+          //                       style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.w700)),
+          //                   IconButton(
+          //                       icon: Icon(Icons.share),
+          //                       onPressed: () {}
+          //                       )
+          //                 ],
+          //               ),
+          //             ),
+          //           ),
+          //           Container(margin: EdgeInsets.only(top: 8.0, bottom: 8.0)),
+          //           Align(
+          //             alignment: Alignment.centerLeft,
+          //             child: Padding(
+          //               padding: EdgeInsets.only(left: 12.0, right: 12.0),
+          //               child: Text('${snapshot.data.description}',
+          //                   style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500)),
+          //             ),
+          //           ),
+          //           Container(margin: EdgeInsets.only(top: 8.0, bottom: 8.0)),
+          //           Align(
+          //             alignment: Alignment.centerLeft,
+          //             child: Padding(
+          //               padding: const EdgeInsets.only(left: 12.0, right: 12.0),
+          //               child: Text('${snapshot.data.company}',
+          //                   textAlign: TextAlign.left,
+          //                   style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500)),
+          //             ),
+          //           ),
+          //           Container(margin: EdgeInsets.only(top: 12.0, bottom: 12.0)),
+          //           Container(
+          //             padding: EdgeInsets.only(left: 12.0, right: 12.0),
+          //             width: double.infinity,
+          //             child: OutlineButton(
+          //               borderSide: BorderSide(color: Colors.blue),
+          //               child: Text(
+          //                 '$buttonText',
+          //                 style: TextStyle(color: Colors.blue),
+          //               ),
+          //               onPressed: () {
+          //                 setState(() {
+          //                   if (buttonText == 'Буду участвовать!') {
+          //                     buttonText = 'Покинуть событие';
+          //                   } else {
+          //                     buttonText = 'Буду участвовать!';
+          //                   }
+          //                 });
+          //               },
+          //             ),
+          //           ),
+          //
+          //           // Edit text
+          //         ]),
+          //       );
+          //     } else if (snapshot.hasError) {
+          //       child = Center();
+          //     } else {
+          //       child = Center();
+          //     }
+          //     return child;
+          //   },
+          // ),
         ));
   }
 

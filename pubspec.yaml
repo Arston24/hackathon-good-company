@@ -82,6 +82,7 @@ flutter:
     - assets/images/Group8.png
     - assets/images/Group7.png
     - assets/images/Group9.png
+    - assets/images/Frame12.png
   fonts:
     - family: TTCommons
       fonts:
