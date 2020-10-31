@@ -28,7 +28,6 @@ class _MainFavoriteScreenState extends State<MainFavoriteScreen> {
             title: Text('Мои события'),
           ),
           body: TabBarView(
-            physics: NeverScrollableScrollPhysics(),
             children: [
               MyEventsScreen(),
               FavoriteEventsScreen(),

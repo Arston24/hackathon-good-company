@@ -59,19 +59,32 @@ class _MyEventsScreenState extends State<MyEventsScreen> {
                                         topRight: Radius.circular(8.0)),
                                     image: DecorationImage(
                                       image: NetworkImage(element.poster),
-                                      fit: BoxFit.fill,
+                                      fit: BoxFit.cover,
                                     ),
                                     shape: BoxShape.rectangle,
                                   ),
                                 ),
-                                Align(
-                                  alignment: Alignment.topLeft,
-                                  child: Padding(
-                                      padding: EdgeInsets.all(8.0),
-                                      child: Text("${element.name}",
-                                          style: TextStyle(
-                                              fontSize: 14.0,
-                                              fontWeight: FontWeight.w700))),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Flexible(
+                                      child: Container(
+                                          padding:
+                                          EdgeInsets.only(left: 8.0, right: 8.0),
+                                          child: Text("${element.name}",
+                                              maxLines: 2,
+                                              overflow: TextOverflow.ellipsis,
+                                              style: TextStyle(
+                                                  fontSize: 14.0,
+                                                  fontWeight: FontWeight.w700))),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(1.0),
+                                      child: IconButton(
+                                          icon: Icon(Icons.favorite_border),
+                                          onPressed: null),
+                                    )
+                                  ],
                                 ),
                                 Align(
                                   alignment: Alignment.topLeft,
@@ -79,6 +92,7 @@ class _MyEventsScreenState extends State<MyEventsScreen> {
                                       padding: EdgeInsets.only(
                                           left: 8.0, right: 8.0, bottom: 8.0),
                                       child: Text("${element.description}",
+                                          maxLines: 3,
                                           style: TextStyle(
                                               fontSize: 14.0,
                                               fontWeight: FontWeight.w400))),

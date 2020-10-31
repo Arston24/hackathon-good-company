@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hackathon_gc/data/model/event.dart';
 import 'package:hackathon_gc/ui/bloc/event_bloc.dart';
+import 'package:hackathon_gc/ui/quiz/quiz_screen.dart';
 
 import 'event_info_screen.dart';
 
@@ -21,84 +22,152 @@ class _EventsListScreenState extends State<EventsListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SingleChildScrollView(
-      scrollDirection: Axis.vertical,
-      controller: ScrollController(),
-      child: StreamBuilder<List<EventModel>>(
+      body: StreamBuilder<List<EventModel>>(
         stream: eventBloc.events,
         builder:
             (BuildContext context, AsyncSnapshot<List<EventModel>> snapshot) {
-          Widget child;
-          var bufferWidgets = <Widget>[];
           if (snapshot.hasData) {
-            // bufferWidgets.add(_buildEventsScroller());
-            bufferWidgets.add(Padding(
-              padding: EdgeInsets.all(8.0),
-            ));
-            snapshot.data.forEach((element) {
-              bufferWidgets.add(Padding(
-                  padding: EdgeInsets.only(left: 8, right: 8),
-                  child: GestureDetector(
+            return ListView.separated(
+              itemCount: snapshot.data.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Padding(
+                    padding: EdgeInsets.only(left: 8, right: 8, top: 8.0),
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => EventInfoScreen(
+                                  eventId: snapshot.data[index].id)),
+                        );
+                      },
+                      child: Card(
+                          elevation: 8.0,
+                          child: Column(
+                            children: [
+                              Container(
+                                height: 200.0,
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(8.0),
+                                      topRight: Radius.circular(8.0)),
+                                  image: DecorationImage(
+                                    image: NetworkImage(
+                                        snapshot.data[index].poster),
+                                    fit: BoxFit.cover,
+                                  ),
+                                  shape: BoxShape.rectangle,
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Flexible(
+                                    child: Container(
+                                        padding: EdgeInsets.only(
+                                            left: 8.0, right: 8.0),
+                                        child: Text(
+                                            "${snapshot.data[index].name}",
+                                            maxLines: 2,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: TextStyle(
+                                                fontSize: 14.0,
+                                                fontWeight: FontWeight.w700))),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(0.0),
+                                    child: IconButton(
+                                        icon: Icon(Icons.favorite_border),
+                                        onPressed: null),
+                                  )
+                                ],
+                              ),
+                              Align(
+                                alignment: Alignment.topLeft,
+                                child: Padding(
+                                    padding: EdgeInsets.only(
+                                        left: 8.0, right: 8.0, bottom: 8.0),
+                                    child: Text(
+                                        "${snapshot.data[index].description}",
+                                        maxLines: 3,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                            fontSize: 14.0,
+                                            fontWeight: FontWeight.w400))),
+                              )
+                            ],
+                          )),
+                    ));
+              },
+              separatorBuilder: (BuildContext context, int index) {
+                if (index == 1) {
+                  return GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                EventInfoScreen(eventId: element.id)),
-                      );
+                      Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (_) => QuizPage()));
                     },
-                    child: Card(
-                        child: Column(
-                      children: [
-                        Container(
-                          height: 200.0,
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                          left: 8.0, right: 8.0, top: 8.0),
+                      child: Card(
+                        elevation: 8.0,
+                        shape: BeveledRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        child: Container(
+                          alignment: Alignment.center,
                           width: double.infinity,
+                          height: 180.0,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(8.0),
-                                topRight: Radius.circular(8.0)),
-                            image: DecorationImage(
-                              image: NetworkImage(element.poster),
-                              fit: BoxFit.fill,
-                            ),
-                            shape: BoxShape.rectangle,
+                              borderRadius: BorderRadius.circular(10),
+                              gradient: LinearGradient(
+                                  begin: Alignment.topRight,
+                                  end: Alignment.bottomLeft,
+                                  colors: [
+                                    Colors.pink[400],
+                                    Colors.pink[400]
+                                  ])),
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(top: 22.0),
+                                child: Align(
+                                  alignment: Alignment.center,
+                                  child: Icon(
+                                      Icons.assignment_turned_in_rounded,
+                                      size: 64.0),
+                                ),
+                              ),
+                              Text(
+                                "Нравится учавствовать в конкурсах?",
+                                style: TextStyle(
+                                    fontSize: 17.0,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                "Пройдите тестирование и получите достижение",
+                                style: TextStyle(
+                                    fontSize: 12.0,
+                                    fontWeight: FontWeight.bold),
+                              )
+                            ],
                           ),
                         ),
-                        Align(
-                          alignment: Alignment.topLeft,
-                          child: Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: Text("${element.name}",
-                                  style: TextStyle(
-                                      fontSize: 14.0,
-                                      fontWeight: FontWeight.w700))),
-                        ),
-                        Align(
-                          alignment: Alignment.topLeft,
-                          child: Padding(
-                              padding: EdgeInsets.only(
-                                  left: 8.0, right: 8.0, bottom: 8.0),
-                              child: Text("${element.description}",
-                                  style: TextStyle(
-                                      fontSize: 14.0,
-                                      fontWeight: FontWeight.w400))),
-                        )
-                      ],
-                    )),
-                  )));
-            });
-            child = Column(
-              children: bufferWidgets,
-              crossAxisAlignment: CrossAxisAlignment.start,
+                      ),
+                    ),
+                  );
+                } else {
+                  return Container();
+                }
+              },
             );
-          } else if (snapshot.hasError) {
-            child = Container();
           } else {
-            child = Container();
+            return Container();
           }
-          return child;
         },
       ),
-    ));
+    );
   }
 }

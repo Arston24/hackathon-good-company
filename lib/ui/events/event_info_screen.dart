@@ -115,7 +115,7 @@ class _EventInfoScreenState extends State<EventInfoScreen> {
                       decoration: BoxDecoration(
                         image: DecorationImage(
                           image: NetworkImage(snapshot.data.poster),
-                          fit: BoxFit.fill,
+                          fit: BoxFit.cover,
                         ),
                         shape: BoxShape.rectangle,
                       ),
