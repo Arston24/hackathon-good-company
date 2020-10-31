@@ -94,7 +94,7 @@ class ProfileMainScreenState extends State<ProfileMainScreen> {
                     ),
                     Positioned(
                       top: 75,
-                      left: 140,
+                      left: 120,
                       child: Container(
                         width: 150,
                         height: 150,
@@ -163,18 +163,34 @@ class ProfileMainScreenState extends State<ProfileMainScreen> {
                             TextStyle(fontWeight: FontWeight.w600, fontSize: 25))
                       ],
                     ),
-                    Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
                       children: [
-                        SvgPicture.asset("assets/images/Ellipse1.svg"),
-                        // Padding(
-                        //   padding: EdgeInsets.only(left: 20),
-                        // ),
-                        SvgPicture.asset("assets/images/Ellipse2.svg"),
-                        // Padding(
-                        //   padding: EdgeInsets.only(left: 20),
-                        // ),
-                        SvgPicture.asset("assets/images/Ellipse3.svg"),
+                        Padding(padding: EdgeInsets.only(left: 15),),
+                        Container(
+                          width: 120,
+                          height: 120,
+
+                          child: Image(
+                              image: AssetImage(
+                                  "assets/images/Group8.png")),
+                        ),
+                        Container(
+                          width: 120,
+                          height: 120,
+
+                          child: Image(
+                              image: AssetImage(
+                                  "assets/images/Group7.png")),
+                        ),
+                        Container(
+                          width: 120,
+                          height: 120,
+
+                          child: Image(
+                              image: AssetImage(
+                                  "assets/images/Group9.png")),
+                        ),
                       ],
                     ),
                     Padding(

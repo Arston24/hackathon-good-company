@@ -78,7 +78,10 @@ flutter:
     - assets/images/avatar.svg
     - assets/images/avatar2.png
     - assets/images/avatar3.png
-
+    - assets/images/rostelekom.svg
+    - assets/images/Group8.png
+    - assets/images/Group7.png
+    - assets/images/Group9.png
   fonts:
     - family: TTCommons
       fonts:
