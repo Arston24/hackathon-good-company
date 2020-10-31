@@ -59,7 +59,7 @@ class _RecommendsEventsListScreenState extends State<RecommendsEventsListScreen>
                                           image: DecorationImage(
                                             image: NetworkImage(
                                                 snapshot.data[index].poster),
-                                            fit: BoxFit.fill,
+                                            fit: BoxFit.cover,
                                           ),
                                           shape: BoxShape.rectangle,
                                         ),

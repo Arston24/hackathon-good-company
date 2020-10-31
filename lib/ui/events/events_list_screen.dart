@@ -61,7 +61,7 @@ class _EventsListScreenState extends State<EventsListScreen> {
                                       image: DecorationImage(
                                         image: NetworkImage(
                                             snapshot.data[index].poster),
-                                        fit: BoxFit.fill,
+                                        fit: BoxFit.cover,
                                       ),
                                       shape: BoxShape.rectangle,
                                     ),

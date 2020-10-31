@@ -65,7 +65,7 @@ class _FavoriteEventsScreenState extends State<FavoriteEventsScreen> {
                                             image: DecorationImage(
                                               image: NetworkImage(
                                                   element.poster),
-                                              fit: BoxFit.fill,
+                                              fit: BoxFit.cover,
                                             ),
                                             shape: BoxShape.rectangle,
                                           ),
