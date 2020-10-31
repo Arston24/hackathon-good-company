@@ -58,7 +58,7 @@ class _MainEventsScreenState extends State<MainEventsScreen> {
                         Container(
                           color: Color(0xffF13B5E),
                           child: TabBar(
-                            isScrollable: true,
+                            // isScrollable: true,
                             labelStyle: TextStyle(
                                 fontSize: 16.0,
                                 fontFamily: 'Family Name',

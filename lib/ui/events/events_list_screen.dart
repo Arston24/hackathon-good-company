@@ -56,7 +56,7 @@ class _EventsListScreenState extends State<EventsListScreen> {
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(10.0),
                                           image: DecorationImage(
-                                            image: NetworkImage(element.poster),
+                                            image: NetworkImage(snapshot.data[index].poster),
                                             fit: BoxFit.fill,
                                           ),
                                           shape: BoxShape.rectangle,
@@ -83,7 +83,7 @@ class _EventsListScreenState extends State<EventsListScreen> {
                                     children: [
                                       Padding(
                                           padding: EdgeInsets.only(left: 4.0),
-                                          child: Text("${element.name}",
+                                          child: Text("${snapshot.data[index].name}",
                                               style: TextStyle(
                                                   fontSize: 25.0,
                                                   color: Colors.white,
@@ -92,7 +92,7 @@ class _EventsListScreenState extends State<EventsListScreen> {
                                           padding: EdgeInsets.only(
                                               left: 4.0,
                                               right: 8.0, bottom: 8.0),
-                                          child: Text("${element.description}",
+                                          child: Text("${snapshot.data[index].description}",
                                               style: TextStyle(
                                                   fontSize: 15.0,
                                                   color: Colors.white,
@@ -107,7 +107,7 @@ class _EventsListScreenState extends State<EventsListScreen> {
                                   height: 35,
                                   child: Text("Записаться",
                                       style:
-                                      TextStyle(fontWeight: FontWeight.w800, fontSize: 20)),
+                                      TextStyle(fontWeight: FontWeight.w900, fontSize: 20)),
                                   // color: Color(0xffF13B5E),
                                   color: Color(0xffE8E8E8),
                                   textColor: Color(0xffF13B5E),
